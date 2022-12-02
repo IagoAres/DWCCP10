@@ -6,10 +6,10 @@ var counter = document.getElementById("counter");
 var tabla = document.getElementById("tabla");
 var dificulty;
 var modes = [["Facil",16,8], ["Media",20,10], ["Dificil",24,12] ];
-var variables = modes[1]
+var chances = modes[1]
 window.onload = function () {
 
-    console.log(variables);
+    console.log(chances[1]);
     for (i = 0; i < 5; i++) {
         var container = document.createElement("div");
         container.setAttribute("class", "container");
