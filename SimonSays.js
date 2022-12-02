@@ -6,7 +6,6 @@ var counter = document.getElementById("counter");
 var tabla = document.getElementById("tabla");
 
 window.onload = function () {
-    console.log(counter.innerHTML);
     var i = 0;
     document.querySelectorAll(".area").forEach((e) => {
 
@@ -36,8 +35,8 @@ window.onload = function () {
             var div = document.createElement("div");
             div.setAttribute("class", "box");
             var span = document.createElement("span");
-            var texto = generate();
-            span.appendChild(document.createTextNode(texto));
+            var text = generate();
+            span.appendChild(document.createTextNode(text));
             div.appendChild(span);
             container.appendChild(div);
             tabla.appendChild(container);
@@ -45,40 +44,36 @@ window.onload = function () {
 
     }
 
+    coordinates;
 
-    console.log("------------------------------");
+    console.log(coordenadas[0])
     coordenadas.forEach((element) => {
         console.log(element);
-});
+        console.log("------------------------------");
+    });
 }
 
-
-
-
 function generate() {
-
-    if (variables.length <= 20) {
+    while (variables.length <= 19) {
         var valor = Math.ceil(Math.random() * (20));
         while (variables.includes(valor)) {
             valor = Math.ceil(Math.random() * (20));
         }
         variables.push(valor);
-
+        console.log(valor)
         return valor;
     }
+}
 
-    if (variables.length == 15) {
+function coordinates() {
+    while (coordenadas.length <= 10) {
         var coor = Math.ceil(Math.random() * (8));
         while (coordenadas.includes(coor)) {
             coor = Math.ceil(Math.random() * (8));
         }
         coordenadas.push(coor);
-    };
-
-
+    }
 }
-
-function coordenadas(){}
 
 
 
