@@ -48,7 +48,7 @@ body {
     justify-content: space-around;
 }
 
-.counter div{
+.counter div {
     display: flex;
     align-self: center;
     justify-content: center;
@@ -56,11 +56,11 @@ body {
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     height: 50%;
     padding: 1px;
-    max-width:10ch;
+    max-width: 10ch;
     flex: 1;
 }
 
-.counter div span{
+.counter div span {
     display: flex;
     align-content: center;
     justify-content: center;
@@ -68,13 +68,13 @@ body {
     border-radius: 50%;
 }
 
-.mode {
+.modes {
     display: flex;
     flex-direction: column;
     margin: 4ch;
 }
 
-.mode div {
+.modes div {
     display: flex;
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     margin: 0.25ch;
@@ -83,7 +83,7 @@ body {
     width: 15ch;
 }
 
-.mode div span {
+.modes div span {
     background-color: rgb(5, 6, 45);
     display: flex;
     flex: 1;

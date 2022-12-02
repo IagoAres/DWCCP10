@@ -4,11 +4,12 @@ var variables = [];
 var coordenadas = [];
 var counter = document.getElementById("counter");
 var tabla = document.getElementById("tabla");
-
+var dificulty;
+var modes = [["Facil",16,8], ["Media",20,10], ["Dificil",24,12] ];
+var variables = modes[1]
 window.onload = function () {
-    var i = 0;
 
-
+    console.log(variables);
     for (i = 0; i < 5; i++) {
         var container = document.createElement("div");
         container.setAttribute("class", "container");
@@ -19,11 +20,21 @@ window.onload = function () {
             var text = generate();
             span.appendChild(document.createTextNode(text));
             div.appendChild(span);
-            container.appendChild(div);   
+            container.appendChild(div);
         }
-tabla.appendChild(container);
+        tabla.appendChild(container);
     }
-    document.querySelectorAll(".box").forEach((e) => {
+
+    document.querySelectorAll(".mode").forEach(e => {
+        e.addEventListener("click", function () {
+            dificulty = e.innerHTML;
+
+
+            console.log(dificulty);
+        })
+    })
+
+    document.querySelectorAll(".box").forEach(e => {
 
         e.addEventListener("click", function () {
             if (e.innerHTML == coordenadas[i]) {
@@ -32,7 +43,6 @@ tabla.appendChild(container);
                 var span = document.createElement("span");
                 span.appendChild(document.createTextNode(e.innerHTML));
                 div.appendChild(span);
-                console.log(div);
                 counter.insertAdjacentElement('beforeend', div);
                 console.log("true");
                 console.log("--------------------");
@@ -43,12 +53,11 @@ tabla.appendChild(container);
         })
     });
 
-    coordinates;
+    coordinates();
 
-    console.log(coordenadas[0])
     coordenadas.forEach((element) => {
-        console.log(element);
         console.log("------------------------------");
+        console.log(element);
     });
 }
 
@@ -59,16 +68,17 @@ function generate() {
             valor = Math.ceil(Math.random() * (20));
         }
         variables.push(valor);
-        console.log(valor)
         return valor;
     }
 }
 
 function coordinates() {
-    while (coordenadas.length <= 10) {
-        var coor = Math.ceil(Math.random() * (8));
+
+    while (coordenadas.length < 12) {
+
+        var coor = Math.ceil(Math.random() * (12));
         while (coordenadas.includes(coor)) {
-            coor = Math.ceil(Math.random() * (8));
+            coor = Math.ceil(Math.random() * (12));
         }
         coordenadas.push(coor);
     }
