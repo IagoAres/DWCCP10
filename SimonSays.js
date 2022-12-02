@@ -7,7 +7,23 @@ var tabla = document.getElementById("tabla");
 
 window.onload = function () {
     var i = 0;
-    document.querySelectorAll(".area").forEach((e) => {
+
+
+    for (i = 0; i < 5; i++) {
+        var container = document.createElement("div");
+        container.setAttribute("class", "container");
+        for (j = 0; j < 4; j++) {
+            var div = document.createElement("div");
+            div.setAttribute("class", "box");
+            var span = document.createElement("span");
+            var text = generate();
+            span.appendChild(document.createTextNode(text));
+            div.appendChild(span);
+            container.appendChild(div);   
+        }
+tabla.appendChild(container);
+    }
+    document.querySelectorAll(".box").forEach((e) => {
 
         e.addEventListener("click", function () {
             if (e.innerHTML == coordenadas[i]) {
@@ -26,23 +42,6 @@ window.onload = function () {
             }
         })
     });
-
-
-    for (i = 0; i < 5; i++) {
-        var container = document.createElement("div");
-        container.setAttribute("class", "container");
-        for (j = 0; j < 4; j++) {
-            var div = document.createElement("div");
-            div.setAttribute("class", "box");
-            var span = document.createElement("span");
-            var text = generate();
-            span.appendChild(document.createTextNode(text));
-            div.appendChild(span);
-            container.appendChild(div);
-            tabla.appendChild(container);
-        }
-
-    }
 
     coordinates;
 
