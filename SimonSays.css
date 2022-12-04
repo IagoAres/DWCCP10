@@ -111,7 +111,7 @@ body {
     flex: 1;
 }
 
-.box span {
+.box .button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,6 +119,8 @@ body {
     border-radius: 180px;
     flex: 1;
     height: 100%;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 

@@ -5,11 +5,12 @@ var coordenadas = [];
 var counter = document.getElementById("counter");
 var tabla = document.getElementById("tabla");
 var dificulty;
-var modes = [["Facil",16,8], ["Media",20,10], ["Dificil",24,12] ];
+var modes = [["Facil", 16, 8], ["Media", 20, 10], ["Dificil", 24, 12]];
 var chances = modes[1]
-window.onload = function () {
 
-    console.log(chances[1]);
+window.onload = function () {
+    var i = 0;
+    console.log("¡¡" + chances[2]);
     for (i = 0; i < 5; i++) {
         var container = document.createElement("div");
         container.setAttribute("class", "container");
@@ -17,6 +18,7 @@ window.onload = function () {
             var div = document.createElement("div");
             div.setAttribute("class", "box");
             var span = document.createElement("span");
+            span.setAttribute("class", "button")
             var text = generate();
             span.appendChild(document.createTextNode(text));
             div.appendChild(span);
@@ -24,21 +26,21 @@ window.onload = function () {
         }
         tabla.appendChild(container);
     }
-
+    coordinates();
+    
     document.querySelectorAll(".mode").forEach(e => {
         e.addEventListener("click", function () {
             dificulty = e.innerHTML;
-
-
             console.log(dificulty);
         })
     })
 
-    document.querySelectorAll(".box").forEach(e => {
+    document.querySelectorAll(".button").forEach(e => {
 
         e.addEventListener("click", function () {
-            if (e.innerHTML == coordenadas[i]) {
 
+            if (e.innerHTML == coordenadas[i]) {
+                i++;
                 var div = document.createElement("div");
                 var span = document.createElement("span");
                 span.appendChild(document.createTextNode(e.innerHTML));
@@ -46,14 +48,15 @@ window.onload = function () {
                 counter.insertAdjacentElement('beforeend', div);
                 console.log("true");
                 console.log("--------------------");
-                i++;
+                console.log(i);
+
             } else {
                 i = 0;
             }
         })
     });
 
-    coordinates();
+
 
     coordenadas.forEach((element) => {
         console.log("------------------------------");
