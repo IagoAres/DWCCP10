@@ -123,12 +123,19 @@ body {
     font-weight: bold;
 }
 
+.loader-div{
+    animation: loader 1.5s infinite;
+}
+
+.iluminati-span{
+    animation: luz 1.25s forwards;
+}
 
 .container .box:hover {
     animation: loader 1.5s infinite;
 }
 
-.container .box span:hover {
+.container .box span:active {
     animation: luz 1.25s forwards;
 }
 
@@ -149,7 +156,6 @@ body {
         transform: translate(5px, 2px);
     }
 }
-
 
 @keyframes luz {
     from {

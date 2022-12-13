@@ -10,7 +10,7 @@ var coordinates;
 var modes = [["Facil", 4, 4, 8], ["Media", 4, 5, 10], ["Dificil", 4, 6, 12]];
 
 window.onload = function () {
-    var i = 0;
+
     document.querySelectorAll(".mode").forEach(e => {
         e.addEventListener("click", function () {
             modes.forEach(element => {
@@ -22,6 +22,7 @@ window.onload = function () {
                     coordenadas.length = 0;
                     LuckyNumbers();
                     BuildTable();
+                    Animate();
                 }
             })
             coordenadas.forEach((element) => {
@@ -29,11 +30,53 @@ window.onload = function () {
                 console.log(element);
             });
             console.log("#####################################################################");
-        })  
+        })
     })
 }
 
+/* function Animate() {
+    coordenadas.forEach((a) => {
+
+        document.querySelectorAll(".button").forEach(element => function () {
+            if (element.innerHTML == a) {
+                element.setAttribute("class", "button iluminati-span");
+                setTimeout(function () {
+                    element.removeAttribute("class");
+                    element.setAttribute("class", "button");
+                    position++;
+                }, 750);
+
+            }
+
+        });
+    });
+       setTimeout(function () {
+            let element = document.getElementById(a);
+            element.setAttribute("class", "button iluminati-span");
+
+            setTimeout(function () {
+                element.removeAttribute("class");
+                element.setAttribute("class", "button");
+            }, 375);
+        }, 375);
+
+
+    });
+    var position = 0;
+     document.querySelectorAll(".button").forEach(element => {
+ 
+         if (coordenadas.includes(element.innerHTML)) {
+             console.log(element);
+
+ 
+         }
+         console.log(coordenadas);
+         console.log(element.innerHTML);
+     });*/
+}
+
 function BuildTable() {
+
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild);
     }
@@ -44,8 +87,10 @@ function BuildTable() {
             var div = document.createElement("div");
             div.setAttribute("class", "box");
             var span = document.createElement("span");
+
             span.setAttribute("class", "button")
             var text = generate();
+            span.setAttribute("id", text);
             span.appendChild(document.createTextNode(text));
             div.appendChild(span);
             container.appendChild(div);
@@ -87,10 +132,6 @@ function generate() {
 }
 
 function LuckyNumbers() {
-    if (coordenadas.length >= 8) {
-        coordenadas.length = 0;
-    }
-
     while (coordenadas.length < coordinates) {
         var coor = Math.ceil(Math.random() * (coordinates));
         while (coordenadas.includes(coor)) {
