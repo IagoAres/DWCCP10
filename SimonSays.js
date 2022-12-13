@@ -50,6 +50,7 @@ function Animate() {
     };
     
     /**
+     * xD
         document.querySelectorAll(".button").forEach(e=>function(){
             if (e.innerHTML == coordenadas[position]){
                 e.setAttribute("class", "button iluminati-span");
