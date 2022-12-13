@@ -72,9 +72,9 @@ window.onload = function () {
          }
          console.log(coordenadas);
          console.log(element.innerHTML);
-     });*/
+     });
 }
-
+*/
 function BuildTable() {
 
     while (tabla.firstChild) {
