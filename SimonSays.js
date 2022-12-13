@@ -36,24 +36,19 @@ window.onload = function () {
 }
 
 function Animate() {
-    console.log("a");
-
     element = document.getElementById(coordenadas[position]);
-
     element.setAttribute("class", "button iluminati-span");
     setTimeout(function () {
         element.removeAttribute("class");
         element.setAttribute("class", "button");
         position++;
     }, 750);
+    if (position == coordenadas.length - 1) {
 
-    if (position == coordenadas.length-1) {
-        console.log("sus")
         clearInterval(intervalo);
+        position = 0;
     };
-
-
-
+    
     /**
         document.querySelectorAll(".button").forEach(e=>function(){
             if (e.innerHTML == coordenadas[position]){
@@ -67,11 +62,9 @@ function Animate() {
             
         });
         position++;
-
-    */
 }
 
-/**coordenadas.forEach((a) => {
+coordenadas.forEach((a) => {
 
     document.querySelectorAll(".button").forEach(element => function () {
         if (element.innerHTML == a) {
@@ -111,6 +104,8 @@ var position = 0;
  });
 }
 */
+}
+
 function BuildTable() {
 
     while (tabla.firstChild) {
