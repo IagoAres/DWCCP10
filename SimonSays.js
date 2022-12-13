@@ -8,7 +8,8 @@ var rows;
 var cols;
 var coordinates;
 var modes = [["Facil", 4, 4, 8], ["Media", 4, 5, 10], ["Dificil", 4, 6, 12]];
-
+var position = 0;
+var intervalo;
 window.onload = function () {
 
     document.querySelectorAll(".mode").forEach(e => {
@@ -22,7 +23,7 @@ window.onload = function () {
                     coordenadas.length = 0;
                     LuckyNumbers();
                     BuildTable();
-                    Animate();
+                    intervalo = setInterval(Animate, 1000);
                 }
             })
             coordenadas.forEach((element) => {
@@ -34,45 +35,80 @@ window.onload = function () {
     })
 }
 
-/* function Animate() {
-    coordenadas.forEach((a) => {
+function Animate() {
+    console.log("a");
 
-        document.querySelectorAll(".button").forEach(element => function () {
-            if (element.innerHTML == a) {
-                element.setAttribute("class", "button iluminati-span");
+    element = document.getElementById(coordenadas[position]);
+
+    element.setAttribute("class", "button iluminati-span");
+    setTimeout(function () {
+        element.removeAttribute("class");
+        element.setAttribute("class", "button");
+        position++;
+    }, 750);
+
+    if (position == coordenadas.length-1) {
+        console.log("sus")
+        clearInterval(intervalo);
+    };
+
+
+
+    /**
+        document.querySelectorAll(".button").forEach(e=>function(){
+            if (e.innerHTML == coordenadas[position]){
+                e.setAttribute("class", "button iluminati-span");
                 setTimeout(function () {
-                    element.removeAttribute("class");
-                    element.setAttribute("class", "button");
+                    e.removeAttribute("class");
+                    e.setAttribute("class", "button");
                     position++;
                 }, 750);
-
             }
-
+            
         });
-    });
-       setTimeout(function () {
-            let element = document.getElementById(a);
-            element.setAttribute("class", "button iluminati-span");
+        position++;
 
+    */
+}
+
+/**coordenadas.forEach((a) => {
+
+    document.querySelectorAll(".button").forEach(element => function () {
+        if (element.innerHTML == a) {
+            element.setAttribute("class", "button iluminati-span");
             setTimeout(function () {
                 element.removeAttribute("class");
                 element.setAttribute("class", "button");
-            }, 375);
-        }, 375);
+                position++;
+            }, 750);
 
+        }
 
     });
-    var position = 0;
-     document.querySelectorAll(".button").forEach(element => {
+});
+   setTimeout(function () {
+        let element = document.getElementById(a);
+        element.setAttribute("class", "button iluminati-span");
+
+        setTimeout(function () {
+            element.removeAttribute("class");
+            element.setAttribute("class", "button");
+        }, 375);
+    }, 375);
+
+
+});
+var position = 0;
+ document.querySelectorAll(".button").forEach(element => {
  
-         if (coordenadas.includes(element.innerHTML)) {
-             console.log(element);
+     if (coordenadas.includes(element.innerHTML)) {
+         console.log(element);
 
  
-         }
-         console.log(coordenadas);
-         console.log(element.innerHTML);
-     });
+     }
+     console.log(coordenadas);
+     console.log(element.innerHTML);
+ });
 }
 */
 function BuildTable() {
