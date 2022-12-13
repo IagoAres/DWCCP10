@@ -4,17 +4,43 @@ var variables = [];
 var coordenadas = [];
 var counter = document.getElementById("counter");
 var tabla = document.getElementById("tabla");
-var dificulty;
-var modes = [["Facil", 16, 8], ["Media", 20, 10], ["Dificil", 24, 12]];
-var chances = modes[1]
+var rows;
+var cols;
+var coordinates;
+var modes = [["Facil", 4, 4, 8], ["Media", 4, 5, 10], ["Dificil", 4, 6, 12]];
 
 window.onload = function () {
     var i = 0;
-    console.log("¡¡" + chances[2]);
-    for (i = 0; i < 5; i++) {
+    document.querySelectorAll(".mode").forEach(e => {
+        e.addEventListener("click", function () {
+            modes.forEach(element => {
+                if (element[0] == e.innerHTML) {
+                    rows = element[1];
+                    cols = element[2];
+                    coordinates = element[3];
+                    variables.length = 0;
+                    coordenadas.length = 0;
+                    LuckyNumbers();
+                    BuildTable();
+                }
+            })
+            coordenadas.forEach((element) => {
+                console.log("------------------------------");
+                console.log(element);
+            });
+            console.log("#####################################################################");
+        })  
+    })
+}
+
+function BuildTable() {
+    while (tabla.firstChild) {
+        tabla.removeChild(tabla.firstChild);
+    }
+    for (i = 0; i < cols; i++) {
         var container = document.createElement("div");
         container.setAttribute("class", "container");
-        for (j = 0; j < 4; j++) {
+        for (j = 0; j < rows; j++) {
             var div = document.createElement("div");
             div.setAttribute("class", "box");
             var span = document.createElement("span");
@@ -26,19 +52,9 @@ window.onload = function () {
         }
         tabla.appendChild(container);
     }
-    coordinates();
-    
-    document.querySelectorAll(".mode").forEach(e => {
-        e.addEventListener("click", function () {
-            dificulty = e.innerHTML;
-            console.log(dificulty);
-        })
-    })
 
     document.querySelectorAll(".button").forEach(e => {
-
         e.addEventListener("click", function () {
-
             if (e.innerHTML == coordenadas[i]) {
                 i++;
                 var div = document.createElement("div");
@@ -49,43 +65,37 @@ window.onload = function () {
                 console.log("true");
                 console.log("--------------------");
                 console.log(i);
-
             } else {
+                while (counter.firstChild) {
+                    counter.removeChild(counter.firstChild);
+                }
                 i = 0;
             }
         })
     });
-
-
-
-    coordenadas.forEach((element) => {
-        console.log("------------------------------");
-        console.log(element);
-    });
 }
 
 function generate() {
-    while (variables.length <= 19) {
-        var valor = Math.ceil(Math.random() * (20));
+    if (variables.length < ((rows * cols))) {
+        var valor = Math.ceil(Math.random() * (rows * cols));
         while (variables.includes(valor)) {
-            valor = Math.ceil(Math.random() * (20));
+            valor = Math.ceil(Math.random() * (rows * cols));
         }
-        variables.push(valor);
-        return valor;
     }
+    variables.push(valor);
+    return valor;
 }
 
-function coordinates() {
+function LuckyNumbers() {
+    if (coordenadas.length >= 8) {
+        coordenadas.length = 0;
+    }
 
-    while (coordenadas.length < 12) {
-
-        var coor = Math.ceil(Math.random() * (12));
+    while (coordenadas.length < coordinates) {
+        var coor = Math.ceil(Math.random() * (coordinates));
         while (coordenadas.includes(coor)) {
-            coor = Math.ceil(Math.random() * (12));
+            coor = Math.ceil(Math.random() * (coordinates));
         }
         coordenadas.push(coor);
     }
 }
-
-
-
