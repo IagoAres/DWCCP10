@@ -49,62 +49,6 @@ function Animate() {
         position = 0;
     };
     
-    /**
-     * xD
-        document.querySelectorAll(".button").forEach(e=>function(){
-            if (e.innerHTML == coordenadas[position]){
-                e.setAttribute("class", "button iluminati-span");
-                setTimeout(function () {
-                    e.removeAttribute("class");
-                    e.setAttribute("class", "button");
-                    position++;
-                }, 750);
-            }
-            
-        });
-        position++;
-}
-
-coordenadas.forEach((a) => {
-
-    document.querySelectorAll(".button").forEach(element => function () {
-        if (element.innerHTML == a) {
-            element.setAttribute("class", "button iluminati-span");
-            setTimeout(function () {
-                element.removeAttribute("class");
-                element.setAttribute("class", "button");
-                position++;
-            }, 750);
-
-        }
-
-    });
-});
-   setTimeout(function () {
-        let element = document.getElementById(a);
-        element.setAttribute("class", "button iluminati-span");
-
-        setTimeout(function () {
-            element.removeAttribute("class");
-            element.setAttribute("class", "button");
-        }, 375);
-    }, 375);
-
-
-});
-var position = 0;
- document.querySelectorAll(".button").forEach(element => {
- 
-     if (coordenadas.includes(element.innerHTML)) {
-         console.log(element);
-
- 
-     }
-     console.log(coordenadas);
-     console.log(element.innerHTML);
- });
-}
-*/
 }
 
 function BuildTable() {
